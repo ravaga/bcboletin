@@ -35,7 +35,7 @@ elixir(mix => {
         'public/js/scripts.js');
     
         
-    mix.copy('node_modules/bootstrap-sass/assets/fonts', 'public/fonts');
+    mix.copy(['node_modules/bootstrap-sass/assets/fonts', 'bower_components/font-awesome/fonts'], 'public/fonts');
     
     
     

@@ -4,7 +4,7 @@
     
     var app = angular.module('bcBoletin', ['ngRoute', 'ui.bootstrap.datetimepicker', 'angular-loading-bar']);
     
-    var debugMode = true;
+    var debugMode = false;
 
     
     
@@ -36,13 +36,9 @@
             var day = date.getDate();
         
             $scope.today = date;
-            $scope.progress = 5
-            
-            
-            
+
             $scope.search = function(file)
             {
-                $scope.progress = 10
                 
                 if(day < 10)
                 {
@@ -62,23 +58,14 @@
                 }
                 var key = file.city+year+month+day
                 //ti161202
-                $scope.progress += 70
                 HttpFactory.get(key).then(function success(response){
-
-                    $scope.progress += 25
                     var WordSection1 = CleanUpService.parseMainDiv(response.content)
                     var CleanedDiv = CleanUpService.cleanHtml(WordSection1)
-                    $scope.progress += 5
-
                     if(CleanedDiv)
                     {
                         FormatService.formatTables();
-                        
-                        
                         $('#boletin').css('visibility', 'visible');
-                        $('.mainProgress').css('visibility', 'hidden');
                     }
-
                 });
 
             }
@@ -264,13 +251,13 @@
             $http.get('/boletin?key='+key+'').then(function success(response){
 
                 $log.debug('HttpFactory response', response)
-                swal('Yei!', 'Archivo no encontrado :)', 'success')
+                //swal('Yei!', 'Archivo no encontrado :)', 'success')
                 $that.resolve(response.data);
 
             }, function error(err){
 
                 $log.warn('HttpFactory error', err)
-                swal('404', 'Archivo no encontrado :(', 'error')
+                //swal('404', 'Archivo no encontrado :(', 'error')
 
             });
 

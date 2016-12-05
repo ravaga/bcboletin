@@ -8,8 +8,13 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+// Font-awesome
+@import "bower_components/font-awesome/scss/font-awesome";
+
 //Date time picker
 @import "node_modules/angular-bootstrap-datetimepicker/src/scss/datetimepicker";
+
+//Sweet Alert
 @import "bower_components/sweetalert/dev/sweetalert.scss";
 
 .navbar{

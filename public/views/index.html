@@ -1,0 +1,69 @@
+<div class="navbar navbar-default navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+           <div class="navbar-brand">
+                 Boletín Judicial de Baja California
+            </div>
+        </div>
+        <form class="navbar-form navbar-right form-inline">
+            <div class="form-group">
+                <select class="form-control" ng-model="file.city">
+                    <option value="" selected="selected">- Ciudad - </option>
+                    <option value="ti">Tijuana</option>
+                    <option value="te">Tecate</option>
+                    <option value="me">Mexicali</option>
+                    <option value="en">Ensenada</option>
+                    <option value="bc" disabled>Completo</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown">
+                        <div class="input-group date">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i> 
+                            </span>
+                            <input id="fileDate" type="text"  placeholder="{{today | date}}" value="{{file.date | date}}"class="form-control">
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="file.date" data-datetimepicker-config="{ startView:'month', minView:'day', dropdownSelector: '#dropdown2', modelType:'YY-MM-DD' }"/>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-md btn-success" ng-click="search(file)">Consultar</button>
+            </div>
+        </form>
+        
+    </div>
+</div>
+
+
+
+<div class="progress mainProgress" style="visibility:hidden;">
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}%;">
+    <span class="sr-only">{{progress}}% Complete</span>
+  </div>
+</div>
+
+<div class="container" id="boletin" style="visibility:hidden">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">
+                <form class="form form-inline" ng-model="search">
+                    <div class="form-group">        
+                        <input type="text" class="form-control" id="search" placeholder="Oficio">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" ng-click="clear()">Borrar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-body" id="results">
+            
+            </div>
+        </div>
+        
+    </div>
+</div>

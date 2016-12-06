@@ -18,5 +18,5 @@
         <ng-view></ng-view>
     </body>
     <script src="/js/scripts.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="/js/all.js"></script>
 </html>

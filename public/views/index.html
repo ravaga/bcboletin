@@ -1,11 +1,11 @@
-<div class="navbar  navbar-inverse navbar-fixed-top">
+<div class="navbar  navbar-inverse navbar-fixed-top topNav">
     <div class="container-fluid">
         <div class="navbar-header">
            <div class="navbar-brand">
                  Boletín Judicial de Baja California
             </div>
         </div>
-        <form class="navbar-form navbar-right form-inline">
+        <form id="navForm" class="navbar-form navbar-right form-inline">
             <div class="form-group">
                 <select class="form-control" ng-model="file.city">
                     <option value="" selected="selected">- Ciudad - </option>
@@ -23,11 +23,11 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-calendar"></i> 
                             </span>
-                            <input id="fileDate" type="text"  placeholder="{{today | date}}" value="{{file.date | date}}"class="form-control">
+                            <input id="fileDate" type="text"  placeholder="{{today | date}}" value="{{file.date | date }}"class="form-control">
                         </div>
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <datetimepicker data-ng-model="file.date" data-datetimepicker-config="{ startView:'month', minView:'day', dropdownSelector: '#dropdown2', modelType:'YY-MM-DD' }"/>
+                        <datetimepicker data-ng-model="file.date" data-datetimepicker-config="{ startView:'month', minView:'day', dropdownSelector: '#dropdown2', modelType:'YYYY-MM-DD' }"/>
                     </ul>
                 </div>
             </div>
@@ -38,32 +38,33 @@
         
     </div>
 </div>
+<div class="content">
+    <div class="container text-center" id="emptyBoletin">
 
-<div class="container text-center" id="emptyBoletin">
+            <i class="fa fa-balance-scale fa-5x" aria-hidden="true"></i>
+            <h5>Consulta Boletín Judicial de Baja California</h5>
 
-        <i class="fa fa-balance-scale fa-5x" aria-hidden="true"></i>
-        <h3>Consulta Boletín Judicial de Baja California</h3>
+    </div>
 
-</div>
+    <div class="container" id="boletin" style="visibility:hidden">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <form class="form form-inline" ng-model="search">
+                        <div class="form-group">        
+                            <input type="text" class="form-control" id="search" placeholder="Oficio">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" ng-click="clear()" disabled>Borrar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-body" id="results">
 
-<div class="container" id="boletin" style="visibility:hidden">
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading text-center">
-                <form class="form form-inline" ng-model="search">
-                    <div class="form-group">        
-                        <input type="text" class="form-control" id="search" placeholder="Oficio">
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-success" ng-click="clear()">Borrar</button>
-                    </div>
-                </form>
+                </div>
             </div>
-            <div class="panel-body" id="results">
-            
-            </div>
+
         </div>
-        
     </div>
 </div>
 <footer class="navbar navbar-inverse navbar-fixed-bottom">

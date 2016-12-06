@@ -29,7 +29,9 @@
         'CleanUpService',
         'FormatService',
         function($scope, $log, HttpFactory, CleanUpService,FormatService){
-
+            
+            $('#emptyBoletin').show()
+            
             var date = new Date();
             var year = date.getYear() - 100;
             var month= date.getMonth() + 1;
@@ -47,7 +49,6 @@
 
                 if(file == undefined){swal('Selecciona una ciudad'); return false}
                 if(file.city == undefined){swal('Choose City'); return false}
-                $('.mainProgress').css('visibility','visible')
                 if(file.date != undefined)
                 {
                     var arr = file.date.split('-');
@@ -56,15 +57,21 @@
                     day = arr[2]
 
                 }
+                
                 var key = file.city+year+month+day
                 //ti161202
+                $('#emptyBoletin').children().remove()
+                $('#emptyBoletin').append('<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>');
+                
                 HttpFactory.get(key).then(function success(response){
+                    //$('#emptyBoletin').hide();
                     var WordSection1 = CleanUpService.parseMainDiv(response.content)
                     var CleanedDiv = CleanUpService.cleanHtml(WordSection1)
                     if(CleanedDiv)
                     {
                         FormatService.formatTables();
                         $('#boletin').css('visibility', 'visible');
+                        $('#emptyBoletin').hide();
                     }
                 });
 
@@ -143,8 +150,8 @@
         function formatTables()
         {
            $('.WordSection1').find('table').each(function(){
-              
-               $(this).addClass('table table-striped');
+                $(this).wrap('<div class="table-responsive"></div>')
+               $(this).addClass('table table-striped table-hover');
                $('tr > td:nth-child(2)', this).addClass('fileNo');
            });
 
@@ -257,7 +264,7 @@
             }, function error(err){
 
                 $log.warn('HttpFactory error', err)
-                //swal('404', 'Archivo no encontrado :(', 'error')
+                swal('404', 'Archivo no encontrado :(', 'error')
 
             });
 

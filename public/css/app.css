@@ -9002,8 +9002,22 @@ body.stop-scrolling {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
+body {
+  padding-top: 100px; }
+
 .navbar {
   border: 0px;
   border-radius: 0px; }
+
+.scroll {
+  border-radius: 50%;
+  background: green;
+  position: fixed;
+  right: 0%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  color: eee; }
 
 /*# sourceMappingURL=app.css.map */

@@ -8927,6 +8927,13 @@ body.stop-scrolling {
   border: 0px;
   border-radius: 0px; }
 
+.table {
+  border: 0px; }
+  .table tr {
+    border: 0px; }
+    .table tr td {
+      border: 0px; }
+
 .scroll {
   border-radius: 50%;
   background: green;

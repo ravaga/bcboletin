@@ -23,6 +23,15 @@
     border-radius: 0px;
 }
 
+.table{
+    border:0px;
+    tr{
+        border: 0px;
+        td{
+            border:0px;
+        }
+    }
+}
 .scroll{
     border-radius:50%;
     background:green;

@@ -1,6 +1,7 @@
 
 
 (function(){
+    'use strict';
     
     var app = angular.module('bcBoletin', ['ngRoute', 'ui.bootstrap.datetimepicker']);
     
@@ -8,7 +9,7 @@
 
     
     
-    app.config(function($routeProvider){
+    app.config(['$routeProvider' ,function($routeProvider){
 
         $routeProvider
         .when('/' , {
@@ -19,7 +20,7 @@
         .otherwise({redirectTo:'/'});
 
 
-    });
+    }]);
 
     
     

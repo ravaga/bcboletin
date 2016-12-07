@@ -1,4 +1,5 @@
 (function(){
+    'use strict';
     
     //Main Module
     var app = angular.module('bcBoletin');
@@ -27,7 +28,7 @@
                 
             }, function error(err){
                 
-                if(debugMode){$log.warn('Http Error', err)}
+                if(debugMode){$log.warn('Http Error', err.statusText)}
                 
                 swal('Error', 'Archivo no encontrado..', 'error')
                 call.resolve(err)

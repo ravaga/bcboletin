@@ -1,4 +1,5 @@
 (function(){
+    'use strict';
     
     // Main Module
     var app = angular.module('bcBoletin');
@@ -24,6 +25,7 @@
                 if(CleanedDiv)
                 {
                     boletinReady()
+                    doneSearching()
                 }
                 
             });

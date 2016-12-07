@@ -216,3 +216,5 @@ jQuery.fn.removeAttributes = function()
     
     
     
+
+//# sourceMappingURL=plugin.js.map

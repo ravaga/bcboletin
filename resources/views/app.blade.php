@@ -19,4 +19,5 @@
     </body>
     <script src="/js/scripts.js"></script>
     <script src="/js/all.js"></script>
+    <script src="/js/plugin.js"></script>
 </html>

@@ -1,10 +1,11 @@
 (function(){
+    'use strict';
     
     //Main Module
     var app = angular.module('bcBoletin');
     
     //Debug Tools
-    var debugMode = true;
+    var debugMode = false;
     
     
     //Main Controller
@@ -32,7 +33,11 @@
                 }
                 //form is valid remove elements and disable input
                 searching()
+                //make call and get boletin
                 boletinService.getBoletin(form.key)
+                
+                //activate livesearch
+                liveSearch()
                 
                 if(debugMode){$log.debug(file, form)} //debug
                 
@@ -40,27 +45,10 @@
             
             $scope.clear = function()
             {
-                $('#search').val('');
+                $scope.file = {}
+                newSearch()
             }
             
-            $("#search").on("keyup", function() {
-                var value = $(this).val();
-                $("table tr").each(function(index) {
-                    if (index != 0) {
-
-                        $row = $(this);
-
-                        var id = $row.find(".fileNo > p").text();
-                        
-                        if (id.indexOf(value) != 0) {
-                            $(this).hide();
-                        }
-                        else {
-                            $(this).show();
-                        }
-                    }
-                });
-            });
             
             
     }]);

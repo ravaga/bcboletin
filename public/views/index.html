@@ -27,23 +27,30 @@
                         </div>
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <datetimepicker data-ng-model="file.date" data-datetimepicker-config="{ startView:'month', minView:'day', dropdownSelector: '#dropdown2', modelType:'YYYY-MM-DD' }"/>
+                        <datetimepicker id="dateTimePicker" data-ng-model="file.date" data-datetimepicker-config="{ startView:'month', minView:'day', dropdownSelector: '#dropdown2', modelType:'YYYY-MM-DD' }"/>
                     </ul>
                 </div>
             </div>
             <div class="form-group">
-                <button class="btn btn-md btn-success" ng-click="search(file)">Consultar</button>
+                <button class="btn btn-md btn-success searchBtn" ng-click="search(file)">Consultar</button>
+                <button class="btn btn-md btn-success clearBtn" ng-click="clear()">Eliminar</button>
             </div>
         </form>
         
     </div>
 </div>
 <div class="content">
-    <div class="container text-center" id="emptyBoletin">
+    <div class="container text-center" id="placeHolder">
 
+        <div class="welcomeText">
             <i class="fa fa-balance-scale fa-5x" aria-hidden="true"></i>
             <h5>Consulta Boletín Judicial de Baja California</h5>
-
+        </div>
+        <div class="loadingText">
+            <h4>Buscando Archivo...</h4>
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
     </div>
 
     <div class="container" id="boletin" style="visibility:hidden">
@@ -51,11 +58,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
                     <form class="form form-inline" ng-model="search">
-                        <div class="form-group">        
-                            <input type="text" class="form-control" id="search" placeholder="Oficio">
-                        </div>
                         <div class="form-group">
-                            <button class="btn btn-success" ng-click="clear()" disabled>Borrar</button>
+                            <label>Filtro: </label>
+                            <input type="text" class="form-control" id="search" placeholder="Oficio">
                         </div>
                     </form>
                 </div>

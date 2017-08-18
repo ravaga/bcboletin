@@ -13,6 +13,7 @@
 use Goutte\Client;
 use Illuminate\Http\Request;
 
+
 Route::get('/', function () {
     return view('app');
 });
@@ -22,12 +23,20 @@ Route::get('/', function () {
 Route::get('/goute', function(){
     
     $client = new Client();
-    $crawler = $client->request('GET', 'http://www.pjbc.gob.mx/boletinj/2016/my_html/bc161003.htm');
+    $crawler = $client->request('GET', 'http://www.pjbc.gob.mx/boletinj/2017/my_html/ti170426.htm');
     $result = [];
+
+    //http://www.pjbc.gob.mx/boletinj/2017/my_html/ti170426.htm
     
     $crawler->filter('div[class="WordSection1"]')->first();
     
-    print_r($crawler);
+
+    foreach ($crawler as $domElement) 
+    {
+        print_r($domElement->firstChild->nextSibling->nodeValue);
+    }
+
+
     return $result;
 });
 
@@ -38,7 +47,7 @@ Route::get('/boletin', function(Request $request){
     
     $key = $request->input('key');
     
-    $response = $curl->get('http://www.pjbc.gob.mx/boletinj/2016/my_html/'.$key.'.htm');
+    $response = $curl->get('http://www.pjbc.gob.mx/boletinj/2017/my_html/'.$key.'.htm');
     
     if($response->statusCode == '200')
     {

@@ -162,6 +162,15 @@ function bootstrapTables()
         $('tr > td:nth-child(2)', this).addClass('fileNo');
         $('tr > td:nth-child(3)', this).addClass('fileText');
     });
+
+    $(TARGET_DIV).find('div').each(function(){
+
+        if(!$(this).hasClass('table-responsive'))
+        {
+            $(this).addClass('parent').css('background', 'red !important');
+        }
+
+    });
 }
 
 //clear unwanted attributes

@@ -134,7 +134,7 @@
         function formatTables()
         {
             if(debugMode){$log.debug('Applying table classes')} //debug
-            
+            console.log('THIS SHIT=>>>');
             bootstrapTables()
 
         }
